@@ -1,37 +1,44 @@
 {
   "expo": {
-    "name": "blue-pilot",
+    "name": "Blue Pilot",
     "slug": "blue-pilot",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/appIcons/ic_light.png",
     "scheme": "bluepilot",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": {
+        "light": "./assets/images/appIcons/ic_light.png",
+        "dark": "./assets/images/appIcons/ic_dark.png",
+        "tinted": "./assets/images/appIcons/ic_foreground.png"
+      }
     },
     "android": {
+      "icon": "./assets/images/appIcons/ic_light.png",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "foregroundImage": "./assets/images/appIcons/ic_foreground.png",
+        "monochromeImage": "./assets/images/appIcons/ic_foreground.png",
+        "backgroundColor": "#ffffff"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.bluepilot"
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/appIcons/favicon.ico"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
-          "android": {
-            "image": "./assets/images/splash-icon.png",
-            "imageWidth": 76
+          "backgroundColor": "#ffffff",
+          "image": "./assets/images/appIcons/ic_foreground.png",
+          "imageWidth": 200,
+          "dark": {
+            "backgroundColor": "#0a1628",
+            "image": "./assets/images/appIcons/ic_foreground.png"
           }
         }
       ]
