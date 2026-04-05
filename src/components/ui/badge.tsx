@@ -8,7 +8,7 @@ type BadgeProps = {
 };
 
 const variantStyles: Record<BadgeVariant, { container: string; text: string }> = {
-  default: { container: 'bg-mist/30 dark:bg-steel/20', text: 'text-navy dark:text-mist' },
+  default: { container: 'bg-border/40', text: 'text-text' },
   success: { container: 'bg-green-100 dark:bg-green-900/40', text: 'text-green-700 dark:text-green-400' },
   warning: { container: 'bg-yellow-100 dark:bg-yellow-900/40', text: 'text-yellow-700 dark:text-yellow-400' },
   error: { container: 'bg-red-100 dark:bg-red-900/40', text: 'text-red-700 dark:text-red-400' },

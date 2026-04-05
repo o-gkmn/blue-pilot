@@ -10,9 +10,9 @@ export function Card({ children, elevated = false, className = '', ...props }: C
     <View
       {...props}
       className={`
-        bg-white dark:bg-navy
+        bg-background
         rounded-2xl p-4
-        border border-mist/50 dark:border-steel/20
+        border border-border
         ${elevated ? 'shadow-md shadow-black/10' : ''}
         ${className}
       `}

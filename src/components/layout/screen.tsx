@@ -22,7 +22,7 @@ export function Screen({
   const Content = scroll ? ScrollView : View;
 
   return (
-    <SafeAreaView className={`flex-1 bg-gray-100 dark:bg-navy ${className}`}>
+    <SafeAreaView className={`flex-1 bg-background ${className}`}>
       <Content
         {...(props as any)}
         {...(scroll

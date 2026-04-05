@@ -12,20 +12,20 @@ type ButtonProps = PressableProps & {
 
 const variantStyles: Record<Variant, { container: string; text: string }> = {
   primary: {
-    container: 'bg-steel active:opacity-80',
-    text: 'text-navy font-semibold',
+    container: 'bg-primary active:opacity-80',
+    text: 'text-primary-foreground font-semibold',
   },
   secondary: {
-    container: 'bg-mist/30 dark:bg-steel/20 active:opacity-80',
-    text: 'text-navy dark:text-mist font-semibold',
+    container: 'bg-border/40 active:opacity-80',
+    text: 'text-text font-semibold',
   },
   ghost: {
     container: 'active:opacity-60',
-    text: 'text-navy dark:text-mist font-medium',
+    text: 'text-text font-medium',
   },
   destructive: {
-    container: 'bg-red-600 active:opacity-80',
-    text: 'text-white font-semibold',
+    container: 'bg-danger active:opacity-80',
+    text: 'text-primary-foreground font-semibold',
   },
 };
 

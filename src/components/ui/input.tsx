@@ -1,3 +1,4 @@
+import { useTheme } from '@/providers/theme';
 import { TextInput, Text, View, type TextInputProps } from 'react-native';
 
 type InputProps = TextInputProps & {
@@ -7,25 +8,27 @@ type InputProps = TextInputProps & {
 };
 
 export function Input({ label, error, hint, className = '', ...props }: InputProps) {
+  const { getThemeColorByVariable } = useTheme();
+
   return (
     <View className="gap-1">
       {label && (
-        <Text className="text-sm font-medium text-navy/70 dark:text-steel">{label}</Text>
+        <Text className="text-sm font-medium text-text-secondary">{label}</Text>
       )}
       <TextInput
         {...props}
         className={`
           border rounded-xl px-4 py-3 text-base
-          text-navy dark:text-mist
-          bg-white dark:bg-navy
-          ${error ? 'border-red-500' : 'border-mist dark:border-steel/30'}
-          focus:border-steel
+          text-text
+          bg-background
+          ${error ? 'border-danger' : 'border-border'}
+          focus:border-primary
           ${className}
         `}
-        placeholderTextColor="#97acc8"
+        placeholderTextColor={getThemeColorByVariable('text-placeholder')}
       />
-      {error && <Text className="text-sm text-red-500">{error}</Text>}
-      {hint && !error && <Text className="text-sm text-steel dark:text-steel">{hint}</Text>}
+      {error && <Text className="text-sm text-danger">{error}</Text>}
+      {hint && !error && <Text className="text-sm text-text-secondary">{hint}</Text>}
     </View>
   );
 }

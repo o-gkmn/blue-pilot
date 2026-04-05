@@ -1,24 +1,23 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Stack } from 'expo-router';
-import { useColorScheme } from 'react-native';
+import "../global.css";
+import { Theme } from "@/providers/theme";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Stack } from "expo-router";
 
 const queryClient = new QueryClient();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <Theme>
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(tabs)" />
           <Stack.Screen name="(auth)" />
           <Stack.Screen
             name="sensor-details"
-            options={{ presentation: 'transparentModal', animation: 'fade' }}
+            options={{ presentation: "transparentModal", animation: "fade" }}
           />
         </Stack>
-      </ThemeProvider>
+      </Theme>
     </QueryClientProvider>
   );
 }
