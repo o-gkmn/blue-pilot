@@ -41,7 +41,8 @@
             "image": "./assets/images/appIcons/ic_foreground.png"
           }
         }
-      ]
+      ],
+      "@maplibre/maplibre-react-native"
     ],
     "experiments": {
       "typedRoutes": true,

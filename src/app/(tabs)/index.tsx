@@ -1,22 +1,32 @@
+import { MapView } from "@/components/map-view";
 import { Card } from "@/components/ui";
 import { devices } from "@/data/devices";
 import { useTheme } from "@/providers/theme";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import { useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
 
 export default function HomeScreen() {
   const { getThemeColorByVariable } = useTheme();
   const iconColor = getThemeColorByVariable("text-secondary");
+  const [insideYacht, setInsideYacht] = useState(false);
+
+  // This method is unnecessary we remove it when we use real data from api
+  const displayedDevices = devices.map((d) => {
+    if (!insideYacht) {
+      if (d.id === 9) return { ...d, value: "Aktif" };
+      if (d.id === 11) return { ...d, value: "Kapali" };
+    }
+    return d;
+  });
 
   return (
     <View className="flex-1 bg-background">
-      <View className="flex-[4] items-center justify-center">
-        <Text className="text-xl font-semibold text-text">Home</Text>
-      </View>
+      <MapView insideYacht={insideYacht} onToggle={setInsideYacht} />
       <ScrollView className="flex-[6]" showsVerticalScrollIndicator={false}>
         <View className="flex-row flex-wrap">
-          {devices.map((device) => (
+          {displayedDevices.map((device) => (
             <Pressable
               key={device.id}
               className="w-1/3 aspect-square p-1.5"
