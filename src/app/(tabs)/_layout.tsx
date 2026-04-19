@@ -17,7 +17,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
+          title: "Ana Sayfa",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home-outline" size={size} color={color} />
           ),
@@ -26,7 +26,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="devices"
         options={{
-          title: "Devices",
+          title: "Cihazlar",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="hardware-chip-outline" size={size} color={color} />
           ),
@@ -35,7 +35,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="history"
         options={{
-          title: "History",
+          title: "Geçmiş",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="time" size={size} color={color} />
           ),
