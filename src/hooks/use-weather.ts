@@ -31,20 +31,12 @@ export function useWeather(coordinate: [number, number]) {
     error: marineError,
   } = useQuery({
     queryKey: ["weather", "marine", latitude, longitude],
-    queryFn: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log("marine", latitude, longitude);
-
-      const response = await weatherApi.marine({
+    queryFn: () =>
+      weatherApi.marine({
         latitude,
         longitude,
         current: ["sea_surface_temperature", "sea_level_height_msl"],
-      });
-
-      console.log("marine", response);
-
-      return response;
-    },
+      }),
   });
 
   const weather: WeatherData = {
