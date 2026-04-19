@@ -31,12 +31,19 @@ export function useWeather(coordinate: [number, number]) {
     error: marineError,
   } = useQuery({
     queryKey: ["weather", "marine", latitude, longitude],
-    queryFn: () =>
-      weatherApi.marine({
+    queryFn: async () => {
+      console.log("marine", latitude, longitude);
+
+      const response = await weatherApi.marine({
         latitude,
         longitude,
-        current: ["sea_surface_temperature"],
-      }),
+        current: ["sea_surface_temperature", "sea_level_height_msl"],
+      });
+
+      console.log("marine", response);
+
+      return response;
+    },
   });
 
   const weather: WeatherData = {
@@ -45,7 +52,7 @@ export function useWeather(coordinate: [number, number]) {
     windDirection: (forecast?.current?.wind_direction_10m as number) ?? 0,
     pressure: (forecast?.current?.pressure_msl as number) ?? 0,
     seaTemperature: (marine?.current?.sea_surface_temperature as number) ?? 0,
-    depth: 0,
+    depth: (marine?.current?.sea_level_height_msl as number) ?? 0,
   };
 
   return {
