@@ -15,12 +15,12 @@ export function MapControls({
   insideYacht,
   onToggle,
 }: MapControlsProps) {
-  const { weather } = useWeather(coordinate);
+  const { weather, isLoading } = useWeather(coordinate);
 
   return (
     <>
       <View className="absolute top-12 left-2 right-2 flex-row items-center justify-between gap-2">
-        <WeatherChipBar className="flex-1" weather={weather} />
+        <WeatherChipBar className="flex-1" weather={weather} loading={isLoading} />
 
         <Pressable
           className="bg-foreground p-2 rounded-full shadow-lg border border-gray-200 self-center"

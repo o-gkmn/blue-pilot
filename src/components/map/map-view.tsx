@@ -11,7 +11,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MapControls } from "./map-controls";
 import { MapMarker } from "./map-marker";
 
-const DEFAULT_COORDINATE: [number, number] = [29.2375, 40.8722];
+const DEFAULT_COORDINATE: [number, number] = [29.2376, 40.8723];
 // 40.85, 29.2
 // 29.2, 40.85
 // 29.2375, 40.8722

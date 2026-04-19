@@ -5,10 +5,11 @@ import { Chip } from "../ui/chip";
 
 interface WeatherChipBarProps {
   weather: WeatherData;
+  loading?: boolean;
   className?: string;
 }
 
-export function WeatherChipBar({ weather, className }: WeatherChipBarProps) {
+export function WeatherChipBar({ weather, loading, className }: WeatherChipBarProps) {
   return (
     <ScrollView
       horizontal
@@ -17,26 +18,31 @@ export function WeatherChipBar({ weather, className }: WeatherChipBarProps) {
     >
       <View className="flex-row gap-2">
         <Chip
+          loading={loading}
           iconSource={require("@/assets/images/icons/sun.png")}
           text="Hava"
           value={`${weather.temperature}°C`}
         />
         <Chip
+          loading={loading}
           iconSource={require("@/assets/images/icons/windsock.png")}
           text="Rüzgar"
           value={`${weather.windSpeed}kn ${weather.windDirection}°A`}
         />
         <Chip
+          loading={loading}
           iconSource={require("@/assets/images/icons/water-level.png")}
           text="Derinlik"
           value={`${weather.depth}m`}
         />
         <Chip
+          loading={loading}
           iconSource={require("@/assets/images/icons/barometer.png")}
           text="Atm. Bas."
           value={`${weather.pressure} hPa`}
         />
         <Chip
+          loading={loading}
           iconSource={require("@/assets/images/icons/water-temperature.png")}
           text="Deniz Sıc."
           value={`${weather.seaTemperature}°C`}

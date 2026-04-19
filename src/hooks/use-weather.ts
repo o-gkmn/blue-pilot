@@ -32,6 +32,7 @@ export function useWeather(coordinate: [number, number]) {
   } = useQuery({
     queryKey: ["weather", "marine", latitude, longitude],
     queryFn: async () => {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       console.log("marine", latitude, longitude);
 
       const response = await weatherApi.marine({
