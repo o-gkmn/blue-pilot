@@ -19,6 +19,8 @@ export type ToggleProps = {
   options: [ToggleOption, ToggleOption];
   isTextVisible?: boolean;
   onToggle: (active: boolean) => void;
+  activeColor?: string;
+  inactiveColor?: string;
 };
 
 const SLIDE = { duration: 250, easing: Easing.out(Easing.cubic) };
@@ -28,13 +30,15 @@ export function Toggle({
   options,
   isTextVisible,
   onToggle,
+  activeColor,
+  inactiveColor,
 }: ToggleProps) {
   const pillWidth = isTextVisible ? 110 : 55;
   const slideX = useSharedValue(active ? pillWidth : 0);
 
   const { getThemeColorByVariable } = useTheme();
-  const activeIconColor = getThemeColorByVariable("foreground");
-  const inactiveIconColor = getThemeColorByVariable("background");
+  const activeIconColor = activeColor ?? getThemeColorByVariable("foreground");
+  const inactiveIconColor = inactiveColor ?? getThemeColorByVariable("background");
 
   useEffect(() => {
     slideX.value = withTiming(active ? pillWidth : 0, SLIDE);

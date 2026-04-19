@@ -1,4 +1,4 @@
-import { MapView } from "@/components/map-view";
+import { MapView } from "@/components/map/map-view";
 import { Card } from "@/components/ui";
 import { devices } from "@/data/devices";
 import { useTheme } from "@/providers/theme";

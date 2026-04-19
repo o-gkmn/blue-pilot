@@ -6,7 +6,9 @@ type ScreenProps = {
   scroll?: boolean;
   className?: string;
   contentClassName?: string;
-} & (ViewProps | ScrollViewProps);
+  scrollViewProps?: Omit<ScrollViewProps, 'children'>;
+  viewProps?: Omit<ViewProps, 'children'>;
+};
 
 /**
  * Full-screen container with safe area, optional scroll, and max-width centering.
@@ -17,20 +19,26 @@ export function Screen({
   scroll = true,
   className = '',
   contentClassName = '',
-  ...props
+  scrollViewProps,
+  viewProps,
 }: ScreenProps) {
-  const Content = scroll ? ScrollView : View;
-
   return (
     <SafeAreaView className={`flex-1 bg-background ${className}`}>
-      <Content
-        {...(props as any)}
-        {...(scroll
-          ? { contentContainerClassName: `w-full max-w-3xl mx-auto px-4 pb-8 ${contentClassName}` }
-          : { className: `flex-1 w-full max-w-3xl mx-auto px-4 ${contentClassName}` })}
-      >
-        {children}
-      </Content>
+      {scroll ? (
+        <ScrollView
+          {...scrollViewProps}
+          contentContainerClassName={`w-full max-w-3xl mx-auto px-4 pb-8 ${contentClassName}`}
+        >
+          {children}
+        </ScrollView>
+      ) : (
+        <View
+          {...viewProps}
+          className={`flex-1 w-full max-w-3xl mx-auto px-4 ${contentClassName}`}
+        >
+          {children}
+        </View>
+      )}
     </SafeAreaView>
   );
 }

@@ -1,19 +1,11 @@
+import { WeatherData } from "@/types/weather";
 import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { Chip } from "./ui/chip";
+import { Chip } from "../ui/chip";
 
 interface WeatherChipBarProps {
   weather: WeatherData;
   className?: string;
-}
-
-interface WeatherData {
-  temperature: number;
-  windSpeed: number;
-  windDirection: number;
-  depth: number;
-  pressure: number;
-  seaTemperature: number;
 }
 
 export function WeatherChipBar({ weather, className }: WeatherChipBarProps) {

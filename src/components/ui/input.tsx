@@ -7,7 +7,7 @@ type InputProps = TextInputProps & {
   hint?: string;
 };
 
-export function Input({ label, error, hint, className = '', ...props }: InputProps) {
+export function Input({ label, error, hint, className = '', placeholderTextColor, ...props }: InputProps) {
   const { getThemeColorByVariable } = useTheme();
 
   return (
@@ -25,7 +25,7 @@ export function Input({ label, error, hint, className = '', ...props }: InputPro
           focus:border-primary
           ${className}
         `}
-        placeholderTextColor={getThemeColorByVariable('text-placeholder')}
+        placeholderTextColor={placeholderTextColor ?? getThemeColorByVariable('text-placeholder')}
       />
       {error && <Text className="text-sm text-danger">{error}</Text>}
       {hint && !error && <Text className="text-sm text-text-secondary">{hint}</Text>}
